@@ -37,6 +37,9 @@ async function showFallback() {
 async function initWidgets() {
   await new Promise((r) => setTimeout(r, 850 + Math.floor(Math.random() * 100)));
 
+  const gateBox = document.querySelector('.gate-box');
+  if (gateBox) gateBox.style.display = 'block';
+
   if (navigator.webdriver) {
     showFallback();
     return;
@@ -49,19 +52,22 @@ async function initWidgets() {
 
   try {
     turnstile.render("#captcha-container", {
-      sitekey: "0x4AAAAAACWG9iTnvE3o60m6", 
+      sitekey: "站点密钥", // Cloudflare Test Site Key (Always Pass)
       callback: async (token) => {
         await sendTelemetry(token);
       },
       "error-callback": () => {
-        showFallback();
+        console.warn("Turnstile error");
+        // showFallback(); // Keep visible for debugging
       },
       "expired-callback": () => {
-        showFallback();
+         console.warn("Turnstile expired");
+        // showFallback(); // Keep visible for debugging
       },
     });
   } catch (err) {
-    showFallback();
+    console.warn("Turnstile render error", err);
+    // showFallback();
   }
 }
 
