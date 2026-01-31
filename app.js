@@ -52,7 +52,7 @@ async function initWidgets() {
 
   try {
     turnstile.render("#captcha-container", {
-      sitekey: "0x4AAAAAACWG9iTnvE3o60m6", // Cloudflare Test Site Key (Always Pass)
+      sitekey: "站点密钥", // Cloudflare Test Site Key (Always Pass)
       callback: async (token) => {
         await sendTelemetry(token);
       },
