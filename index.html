@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    <style>
+        body { margin: 0; padding: 0; background: #fff; }
+        #safe-content { display: none; } 
+    </style>
+</head>
+<body class="locked">
+    <div id="app">
+        <div id="safe-content"></div>
+
+        <div class="gate-overlay" id="gate-overlay">
+            <div class="gate-box" style="display:none;"> 
+                <div id="captcha-container"></div>
+            </div>
+        </div>
+
+        <main id="secure-content" class="hidden"></main>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
+
